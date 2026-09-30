@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <style>
 :root {
+    
     --bg: #0a0a0f; --card: #14121e;
     --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.1);
     --gold: #ffd700; --orange: #ff6b35; --pink: #ff2e63;
@@ -20,6 +21,7 @@
     --msg-avatar-size: 30px;
     --msg-name-size: 10px;
     --room-bg-opacity: 0.55;
+    
 }
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Tajawal','Inter',sans-serif; }
 body { min-height:100vh; background:var(--bg); color:var(--text); overflow-x:hidden; -webkit-tap-highlight-color:transparent; }
@@ -30,6 +32,8 @@ body { min-height:100vh; background:var(--bg); color:var(--text); overflow-x:hid
 .hidden { display:none !important; }
 
 /* ====== زر الدعم الفني العائم (صغير - أعلى يمين) ====== */
+    
+   .auth-hero::after{display:none!important} 
 .support-fab {
     position: fixed;
     top: 8px;
@@ -56,6 +60,7 @@ body { min-height:100vh; background:var(--bg); color:var(--text); overflow-x:hid
 }
 
 /* ====== شاشة تسجيل الدخول ====== */
+    #supportFab{display:none!important}
 .auth-screen {
     position: fixed; inset: 0; z-index: 1000;
     background: var(--bg);
@@ -65,8 +70,8 @@ body { min-height:100vh; background:var(--bg); color:var(--text); overflow-x:hid
 }
 .auth-screen.active { display: flex; }
 .auth-hero {
-    height: 14vh; min-height: 90px; width: 100%;
-    background: url('https://iili.io/nYzeQXn.gif') center/cover no-repeat;
+    height: 16vh; min-height: 90px; width: 100%;
+    background: url('https://iili.io/nY4x8Eg.gif') center/cover no-repeat;
     position: relative; flex-shrink: 0;
     border-bottom: 2px solid rgba(255,107,53,.4);
     box-shadow: 0 6px 25px rgba(255,107,53,.3);
@@ -1057,7 +1062,7 @@ body { min-height:100vh; background:var(--bg); color:var(--text); overflow-x:hid
 <!-- ====== شاشة تسجيل الدخول ====== -->
 <div class="auth-screen active" id="authScreen">
     <div class="auth-hero">
-        <div class="auth-hero-title">💖 دان قلبي 💖</div>
+        <div class="auth-hero-title"></div>
     </div>
     <div class="auth-card">
         <div class="auth-tabs">
@@ -1069,7 +1074,7 @@ body { min-height:100vh; background:var(--bg); color:var(--text); overflow-x:hid
             <div class="auth-field"><i class="bi bi-envelope-fill"></i><input type="email" class="auth-input" id="loginEmail" placeholder="البريد الإلكتروني"></div>
             <div class="auth-field"><i class="bi bi-lock-fill"></i><input type="password" class="auth-input" id="loginPassword" placeholder="كلمة السر"></div>
             <button class="auth-submit" id="loginBtn">🔑 تسجيل الدخول</button>
-            <button class="auth-avatar-btn" id="forgotPasswordBtn" style="width:100%;padding:5px;font-size:9px;">📧 نسيت كلمة السر؟</button>
+            <button class="auth-avatar-btn" id="forgotPasswordBtn" style="width:100%;padding:5px;font-size:9px;"></button>
         </div>
         <div class="auth-form" id="registerForm">
             <div class="auth-avatar-preview">
@@ -1770,7 +1775,7 @@ function updateEnterRoomsBtn(){
     if(!btn) return;
     if(currentUser){
         btn.classList.remove('disabled');
-        btn.innerHTML = '<i class="bi bi-door-open-fill"></i> دخول الغرف';
+        btn.innerHTML = '<i class="bi bi-door-open-fill"></i> دخول بحسابك الاخير🎲 ';
     } else {
         btn.classList.add('disabled');
         btn.innerHTML = '<i class="bi bi-lock-fill"></i> سجّل الدخول أولاً';
@@ -1911,10 +1916,10 @@ function openWall(){
 function renderWall(){
     const c = $('wallFSBody');
     let h = `<div class="wall-post-input-area">
-        <textarea id="wallPostText" class="wall-post-textarea" placeholder="شارك شيئاً... (يمكنك نشر رابط صورة أو يوتيوب وسيظهر تلقائياً)"></textarea>
+        <textarea id="wallPostText" class="wall-post-textarea" placeholder="شارك شيئاً... )"></textarea>
         <div class="wall-post-input-actions">
-            <button class="wall-post-input-btn" id="wallAttachImageBtn"><i class="bi bi-image"></i> صورة</button>
-            <button class="wall-post-input-btn" id="wallAttachYoutubeBtn"><i class="bi bi-youtube"></i> يوتيوب</button>
+            <button class="wall-post-input-btn" id="wallAttachImageBtn"><i class="bi bi-image"></i> </button>
+            <button class="wall-post-input-btn" id="wallAttachYoutubeBtn"><i class="bi bi-youtube"></i></button>
             <button class="wall-post-input-btn primary" id="postToWallBtn"><i class="bi bi-send-fill"></i> نشر</button>
         </div>
     </div>`;
