@@ -1034,9 +1034,72 @@ body { min-height:100vh; background:var(--bg); color:var(--text); overflow-x:hid
     border-color: transparent;
     flex: 1;
 }
+/* ====== الألعاب ====== */
+.games-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 6px;
+}
+.game-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 12px;
+    background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    border: 1.5px solid rgba(255,255,255,.1);
+    border-radius: 18px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    transition: all .25s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+    transition: left .5s;
+}
+.game-card:hover::before { left: 100%; }
+.game-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: var(--orange);
+    box-shadow: 0 10px 30px rgba(255,107,53,.35);
+}
+.game-card:active { transform: scale(0.97); }
+.game-card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin-bottom: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.4), inset 0 0 20px rgba(255,255,255,.1);
+    border: 3px solid rgba(255,255,255,.2);
+}
+.game-card-title {
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 6px rgba(0,0,0,.6);
+}
+.game-card-desc {
+    font-size: 10px;
+    color: rgba(255,255,255,.6);
+    font-weight: 600;
+}
 </style>
 </head>
 <body>
+
   <h1 style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
  شا دان قلبي - شات ودردشة عربية مجانية
 </h1>
@@ -1052,6 +1115,8 @@ body { min-height:100vh; background:var(--bg); color:var(--text); overflow-x:hid
 </div>
 
 <!-- ====== زر الدعم الفني العائم (صغير - أعلى يمين - للجميع) ====== -->
+
+
 <div class="support-fab" id="supportFab" title="الدعم الفني">
     <i class="bi bi-headset"></i>
 </div>
@@ -1197,6 +1262,43 @@ body { min-height:100vh; background:var(--bg); color:var(--text); overflow-x:hid
     </div>
 </div>
 
+<!-- ====== نافذة الألعاب ====== -->
+<div class="full-panel" id="gamesFullscreen">
+    <div class="full-head">
+        <h2>🎮 الألعاب</h2>
+        <button class="icon-btn" id="closeGamesFS"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="full-body" id="gamesFSBody">
+        <p style="text-align:center;color:var(--text3);padding:10px;font-size:12px;">اختر لعبة للعب 🎯</p>
+        <div class="games-grid">
+            <a class="game-card" href="https://amanhsn55555-eng.github.io/Users-chat/" target="_blank" rel="noopener">
+                <div class="game-card-icon" style="background:linear-gradient(135deg,#ff6b35,#ff2e63);">⚔️</div>
+                <div class="game-card-title">تحدي دان وحسين</div>
+                <div class="game-card-desc">لعبة التحدي الأشهر 🔥</div>
+            </a>
+            <a class="game-card" href="#" target="_blank" rel="noopener" onclick="return showGameSoon(event)">
+                <div class="game-card-icon" style="background:linear-gradient(135deg,#3498db,#9b59b6);">🧠</div>
+                <div class="game-card-title">لعبة الذكاء</div>
+                <div class="game-card-desc">قريباً...</div>
+            </a>
+            <a class="game-card" href="#" target="_blank" rel="noopener" onclick="return showGameSoon(event)">
+                <div class="game-card-icon" style="background:linear-gradient(135deg,#2ecc71,#27ae60);">🎯</div>
+                <div class="game-card-title">لعبة التصويب</div>
+                <div class="game-card-desc">قريباً...</div>
+            </a>
+            <a class="game-card" href="#" target="_blank" rel="noopener" onclick="return showGameSoon(event)">
+                <div class="game-card-icon" style="background:linear-gradient(135deg,#ffd700,#f39c12);">🏆</div>
+                <div class="game-card-title">تحدي الملوك</div>
+                <div class="game-card-desc">قريباً...</div>
+            </a>
+            <a class="game-card" href="#" target="_blank" rel="noopener" onclick="return showGameSoon(event)">
+                <div class="game-card-icon" style="background:linear-gradient(135deg,#e74c3c,#c0392b);">🎲</div>
+                <div class="game-card-title">لعبة الحظ</div>
+                <div class="game-card-desc">قريباً...</div>
+            </a>
+        </div>
+    </div>
+</div>
 <!-- ====== لوحة إعدادات الغرفة ====== -->
 <div class="corner-panel" id="settingsCornerPanel">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span style="font-weight:800;">⚙️ الإعدادات</span><button class="icon-btn" id="closeSettingsCorner" style="width:26px;height:26px;"><i class="bi bi-x-lg"></i></button></div>
@@ -1900,7 +2002,7 @@ document.querySelectorAll('#quickMenuPanel .quick-icon').forEach(ic=>{
         const t = ic.dataset.quick;
         $('quickMenuPanel').classList.remove('show');
         if(t==='members'){ if(activeRoom){ renderMembersFS(); $('membersFullscreen').classList.add('show'); } else showToast('ℹ️','ادخل غرفة'); }
-        else if(t==='games') showToast('🎮','قريباً');
+        else if(t==='games') openGamesPanel();
         else if(t==='shop'){ if(activeRoom) document.querySelector('#settingsCornerPanel .set-item[data-panel="set-shop"]')?.click(); else showToast('ℹ️','ادخل غرفتك'); }
         else if(t==='gifts'){ if(activeRoom) openGiftsPanel(); else showToast('ℹ️','ادخل غرفة'); }
         else if(t==='friends') openFriendsPanel();
@@ -2600,7 +2702,7 @@ document.querySelectorAll('#pfQuickIcons .quick-icon').forEach(ic=>{
     ic.addEventListener('click',()=>{
         const t=ic.dataset.quick;
         if(t==='members'){ $('profileFullModal').classList.remove('active'); if(activeRoom){ renderMembersFS(); $('membersFullscreen').classList.add('show'); } else showToast('ℹ️','ادخل غرفة'); }
-        else if(t==='games'){ $('profileFullModal').classList.remove('active'); showToast('🎮','قريباً'); }
+        else if(t==='games'){ $('profileFullModal').classList.remove('active'); openGamesPanel(); }
         else if(t==='shop'){ $('profileFullModal').classList.remove('active'); showToast('🛍️','من الإعدادات'); }
         else if(t==='gifts'){ $('profileFullModal').classList.remove('active'); if(activeRoom) openGiftsPanel(); else showToast('ℹ️','ادخل غرفة'); }
         else if(t==='friends'){ $('profileFullModal').classList.remove('active'); openFriendsPanel(); }
@@ -3919,7 +4021,9 @@ function initEvents(){
     $('closePrivateChat').addEventListener('click',()=>{ $('privateChatOverlay').classList.remove('active'); if(privateChatListener) privateChatListener(); privateChatFriend=null; });
     $('sendPrivateMsg').addEventListener('click',()=>{ const t=$('privateChatInput').value.trim(); if(!t||!privateChatFriend) return; const cid=[currentUser.uid,privateChatFriend.uid].sort().join('_'); addDoc(collection(db,'privateChats',cid,'messages'),{text:t,from:currentUser.uid,to:privateChatFriend.uid,createdAt:serverTimestamp()}); $('privateChatInput').value=''; });
     $('privateChatInput').addEventListener('keydown',(e)=>{ if(e.key==='Enter') $('sendPrivateMsg').click(); });
+$('closeGamesFS')?.addEventListener('click', ()=>$('gamesFullscreen').classList.remove('show'));    
 }
+
 
 async function openFilterMatches(){
     if(!activeRoom) return;
@@ -3942,7 +4046,16 @@ async function openFilterMatches(){
         document.querySelectorAll('.del-match').forEach(b=>{ b.addEventListener('click',async ()=>{ await deleteDoc(doc(db,'rooms',activeRoom.id,'settings','filterMatches','items',b.dataset.id)); b.closest('div[style*="rgba(255,255,255,.04)"]').remove(); showToast('🗑️','تم'); }); });
     }catch(e){ showToast('❌','فشل'); }
 }
-
+// ====== فتح نافذة الألعاب ======
+function openGamesPanel(){
+    if(!currentUser) return showToast('⚠️','سجّل الدخول أولاً');
+    $('gamesFullscreen').classList.add('show');
+}
+function showGameSoon(e){
+    e.preventDefault();
+    showToast('🎮','اللعبة قريباً إن شاء الله');
+    return false;
+}
 onAuthStateChanged(auth, async (u)=>{
     currentUser=u;
     if(u){
